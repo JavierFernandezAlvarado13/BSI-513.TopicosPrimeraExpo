@@ -1,0 +1,41 @@
+﻿@model PrimeraExpo.ViewModels.PersonaViewModels.DetallesViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Detalles";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Persona:</h2>
+        <p>Nombre: @Model.Persona.Nombre</p>
+        <p>Apellido: @Model.Persona.Apellidos</p>
+        <p>Edad: @Model.Persona.Edad</p>
+        <p>Correo: @Model.Persona.Correo</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Facturas:</h2>
+        @if (Model.Persona.Facturas.Count > 0)
+        {
+            <table class="table table-hover">
+                <tr>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                </tr>
+                @foreach (var factura in Model.Persona.Facturas)
+                {
+                    <tr>
+                        <td>@factura.Descripcion</td>
+                        <td>&#36;@factura.Precio</td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>La persona no tiene ninguna factura disponible.</p>
+        }
+    </div>
+</div>

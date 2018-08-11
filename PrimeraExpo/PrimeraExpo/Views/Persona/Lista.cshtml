@@ -1,0 +1,38 @@
+﻿@model PrimeraExpo.ViewModels.PersonaViewModels.ListaViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Lista";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Lista de personas en el sistema:</h3>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-hover">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Edad</th>
+                <th>Correo</th>
+                <th>Facturas</th>
+            </tr>
+
+            @foreach (var persona in Model.Personas)
+            {
+                <tr>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellidos</td>
+                    <td>@persona.Edad</td>
+                    <td>@persona.Correo</td>
+                    <td>@Html.ActionLink("Ver Facturas", "Detalles", "Persona", new { id = persona.PersonaId }, null)</td>
+
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
